@@ -2,18 +2,29 @@
 
 ## Project Structure & Module Organization
 
-This repository is currently a clean project root with no source, test, asset, or configuration files detected. As the project grows, keep responsibilities separated using the following layout:
+This is an existing Next.js App Router project with TypeScript, Tailwind CSS 4, and ESLint. Preserve its configuration and keep responsibilities separated using the following layout:
 
 - `src/` — application source code, organized by feature or domain.
 - `tests/` — automated tests mirroring the relevant `src/` structure.
 - `assets/` — static images, sample data, and other non-code resources.
 - `docs/` — project notes, design decisions, and user-facing documentation.
 
+The current landing page uses `src/app/`, `src/components/landing/`, `src/components/three/`, `src/components/media/`, `src/components/ui/`, `src/hooks/`, and `src/lib/`. Public models live in `public/3dmodels/`; do not modify original model assets.
+
 Prefer small, focused modules and keep generated files out of version control.
 
 ## Build, Test, and Development Commands
 
-No build or test tooling is configured yet. When adding a toolchain, document the canonical commands here and in the project README. At minimum, provide commands for:
+Canonical commands (also documented in README.md):
+
+- `npm ci` — install dependencies.
+- `npm run dev` — run Next.js locally.
+- `npm run lint` — ESLint.
+- `npm run typecheck` — TypeScript without emitting output.
+- `npm run build` and `npm run start` — production build and server.
+- `npm test` — Playwright regression tests against the production build; build first. Uses installed Chrome on Windows, Playwright Chromium elsewhere.
+
+There is no separate formatter configured; preserve the existing two-space conventions. In PowerShell environments that block npm.ps1, use npm.cmd. When adding tooling, document commands here and in the README. At minimum, provide commands for:
 
 - installing dependencies (for example, `npm install` or `pip install -r requirements.txt`);
 - running the application locally (for example, `npm run dev`);
@@ -28,7 +39,7 @@ Use the formatter and linter adopted by the project rather than relying on edito
 
 ## Testing Guidelines
 
-No testing framework or coverage threshold is configured yet. Add tests for new behavior and regression cases, place them under `tests/`, and use descriptive names such as `test_rejects_invalid_phone_number`. Keep tests deterministic and independent of local machine state.
+Playwright tests live under `tests/`; no coverage threshold is configured. Add tests for new behavior and regression cases with descriptive names. Keep tests deterministic: render the actual local GLB, but mock external YouTube transport for layout and player lifecycle tests. Cover responsive widths, scroll expansion, keyboard access, and prefers-reduced-motion. Generated test artifacts are ignored.
 
 ## Commit & Pull Request Guidelines
 

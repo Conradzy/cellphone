@@ -1,18 +1,24 @@
+import { ExpandingVideoSection } from "@/components/landing/ExpandingVideoSection";
+import { Hero } from "@/components/landing/Hero";
+import { Navbar } from "@/components/landing/Navbar";
+import { ProductDetails } from "@/components/landing/ProductDetails";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-950 px-6 py-16 text-slate-100">
-      <section className="w-full max-w-2xl rounded-3xl border border-slate-800 bg-slate-900 p-8 shadow-2xl sm:p-12">
-        <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">
-          Cellphone
-        </p>
-        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-          Your Next.js app is ready.
-        </h1>
-        <p className="mt-5 max-w-xl text-lg leading-8 text-slate-400">
-          Start building in <code className="text-slate-200">src/app</code> with
-          TypeScript, the App Router, and Tailwind CSS.
-        </p>
-      </section>
-    </main>
+    <>
+      <a className="skip-link" href="#main">Skip to content</a>
+      <Navbar />
+      <main id="main">
+        <Hero />
+        <ExpandingVideoSection />
+        <ProductDetails />
+      </main>
+      <footer className="site-footer">
+        <a className="wordmark" href="#overview" aria-label="FORM home">form<span>®</span></a>
+        <p>An independent concept. Not affiliated with Apple.</p>
+        <p className="model-credit">Model by <a href="https://sketchfab.com/MG990" target="_blank" rel="noreferrer">MajdyModels</a>{" · "}<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a></p>
+        <a className="text-link" href="#overview">Back to top <span aria-hidden="true">↗</span></a>
+      </footer>
+    </>
   );
 }
